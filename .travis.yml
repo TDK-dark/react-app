@@ -1,0 +1,11 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -f Dockerfile.dev -t coldcode/react-app .
+
+script:
+  - docker run -e CI=true coldcode/react-app npm run test
